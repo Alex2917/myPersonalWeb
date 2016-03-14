@@ -1,0 +1,67 @@
+body{
+	background-color: #524664;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+	color: #fff;
+}
+.main_body{
+	margin-top: 60px;
+	min-height: 500px;
+}
+.name{
+	margin-right: 10px;
+}
+.tips_wrap{
+	background-color: #EEF5EB;
+}
+.tips_to_u{
+	color: #67711A;
+	font-size: 16px;
+	
+}
+.name{
+	color: #3c763d;
+}
+.time{
+	color: grey;
+	font-size: 12px;
+}
+.nickname_lable,.write_lable{
+	color: #8a6d3b;
+	font-size: 16px;
+}
+#nickname{
+	width: 180px;
+}
+/* .message_content{
+	padding: 6px 0;
+} */
+.write_place{
+	min-height: 100px;
+}
+.no_message{
+	color: #B52828;
+	font-size: 16px;
+	padding: 15px;
+	border-top: 1px dotted #000;
+}
+/*----- responsive-design ------*/
+@media screen and (max-width:1366px){
+	.main_body .wrapper{
+	width: 500px;
+	}
+}
+@media screen and (max-width:1024px){
+	.main_body .wrapper{
+	width: 400px;
+	}
+}
+@media screen and (max-width:480px){
+	.main_body .wrapper{
+	width: 300px;
+	}
+}
+@media screen and (max-width:320px){
+	.main_body .wrapper{
+	width: 250px;
+	}
+}

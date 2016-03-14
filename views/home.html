@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='css/bootstrap.mim.css' />
+    <link rel='stylesheet' href='css/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+  	<% include header.html %>
+
+    <h1>Welcome <%= user.username %>, 欢迎登陆！！</h1>
+    <a class="btn" href="/logout">退出</a>
+    
+    <% include footer.html %>
+  </body>
+</html>

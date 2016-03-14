@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <!-- Bootstrap -->
+  <link rel='stylesheet' href='css/bootstrap.min.css' />
+  <link rel='stylesheet' href='css/message_board.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+  <% include header.html %>
+  <div class="container main_body">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">留言板</h3>
+      </div>
+      <div class="panel-body tips_wrap">
+        <p class="tips_to_u">
+          Just say something , Your suggestions will be the best gifts for me.
+        </p>
+      </div>
+      <% if (messages_list.length) { %>
+      <div class="list-group" id="message_list">
+        <% messages_list.forEach(function(data){ %>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">
+            <span class="name">
+              <%= data.name %></span>
+            <span class="time">
+              <%= data.time %></span>
+          </h4>
+          <p class="list-group-item-text message_content">
+            <%= data.content %></p>
+        </a>
+        <% }) %>
+      </div>
+      <% } else { %>
+      <p class="no_message">暂无留言,快来抢沙发吧！</p>
+      <% } %></div>
+    <div class="panel panel-warning">
+      <div class="panel-heading">你想说点什么</div>
+      <div class="panel-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="nickname" class="col-sm-1 control-label nickname_lable">昵称</label>
+            <div class="col-sm-11">
+              <input type="text" name="nickname" class="form-control" id="nickname" placeholder="随便写一个你的昵称"></div>
+          </div>
+          <div class="form-group">
+            <label for="write_place" class="col-sm-1 control-label write_lable">留言</label>
+            <div class="col-sm-11">
+              <textarea type="text" name="write_place" class="form-control write_place" id="write_place" placeholder="文明上网，素质留言"></textarea>
+            </div>
+          </div>
+          <span id="error_tips"></span>
+          <button type="submit" class="btn btn-success  btn-lg pull-right" id="submit">发表留言</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <% include footer.html %>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    $(function(){   
+      $("#submit").click(function(){
+        var nickname = $("#nickname").val();
+        var content = $("#write_place").val();
+        var data = {
+          "nickname" : nickname,
+          "content" : content
+        }
+        $("#submit").text('正在提交...');
+        $.ajax({
+          url:"send_message",
+          type:"POST",
+          data:data,
+          success:function(data){
+            $("#submit").text('发表留言');
+            $("#message_list").append(data);
+            $("#nickname").val("");
+            $("#write_place").val("");
+          }
+        })
+        return false;
+      })
+    })
+  </script>
+</body>
+</html>

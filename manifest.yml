@@ -1,0 +1,6 @@
+---
+# this is a minimal manifest
+applications:
+- name: lcgg2917
+  command: node app.js
+  memory: 512M
